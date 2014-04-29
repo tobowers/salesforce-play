@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'bundler'
+Bundler.require(:default)
+
+require 'databasedotcom'
+require 'metaforce'
+require 'pry'
+
+cli = Databasedotcom::Client.new(client_id: ENV['SF_CLIENT_ID'], client_secret: ENV['SF_CLIENT_SECRET'])
+
+cli.authenticate(username: ENV['SF_CLIENT_USERNAME'], password: ENV['SF_CLIENT_PASSWORD'] + )
+
+cli.materialize('CampaignMember')
+cli.materialize("Campaign")
+
+meta = Metaforce::Metadata::Client.new(username: ENV['SF_CLIENT_USERNAME'], password: ENV['SF_CLIENT_PASSWORD'], security_token: ENV['SF_CLIENT_SEC_TOKEN'])
+
+
+binding.pry
